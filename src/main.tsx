@@ -4,10 +4,12 @@ import './styles/colors.css'
 import './styles/typography.css'
 
 import App from './App.tsx'
+import { BrowserRouter } from 'react-router'
  
 
 createRoot(document.getElementById('root')!).render(
-  
+  <BrowserRouter>
     <App />
+  </BrowserRouter>
   ,
 )
