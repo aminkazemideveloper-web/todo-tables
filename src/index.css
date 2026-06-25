@@ -1,0 +1,25 @@
+* , *::before , *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+ul {
+    list-style-type: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+button, input , textarea , select {
+    font-family: inherit;
+}
+
+body{
+    font-family: "Vazirmatn", sans-serif; ;
+    inline-size: min(100% , 75rem);
+    margin-inline: auto;
+    
+}
