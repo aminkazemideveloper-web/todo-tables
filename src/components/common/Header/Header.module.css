@@ -1,0 +1,9 @@
+.header{
+    padding-block: 1rem;
+    .logo{
+        font-family: "lalezar";
+        font-size:var(--font-size-800);
+        color: var(--color-secondary);
+        font-weight: bold;
+    }
+}
