@@ -4,6 +4,7 @@ import styles from './HomePage.module.css'
 import BoardCard from "../../components/boardCard/boardCard";
 import Button from "../../components/common/Button/Button";
 import Header from "../../components/common/Header/Header";
+import Footer from "../../components/common/Footer/Footer";
 
 export default function HomePage(): ReactNode {
     return (
@@ -53,7 +54,7 @@ export default function HomePage(): ReactNode {
                     </ul>
                 </main>
             </main>
-            <footer>footer</footer>
+           <Footer/>
         </div>
     )
 }
