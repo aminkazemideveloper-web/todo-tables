@@ -1,6 +1,7 @@
 
 import styles from './App.module.css'
 import BoardCard from './components/boardCard/boardCard'
+import Button from './components/common/Button/Button'
 
 function App() {
 
@@ -11,7 +12,8 @@ function App() {
       <main>
         <header className={styles.header}>
           <h1 className={styles.title}>todo</h1>
-          <button className={styles.action}>create</button>
+          {/* <button className={styles.action}>create</button> */}
+          <Button variant='solid' color='gray'>create</Button>
         </header>
         <main className={styles.main}>
           <ul className={styles.boards}>
