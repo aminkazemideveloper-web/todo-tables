@@ -19,7 +19,7 @@ button, input , textarea , select {
 
 body{
     font-family: "Vazirmatn", sans-serif; ;
-    inline-size: min(100% , 75rem);
+    inline-size: min(100% - 2rem, 75rem);
     margin-inline: auto;
     background-color: var(--color-surface--2);
     color: var(--color-text);
