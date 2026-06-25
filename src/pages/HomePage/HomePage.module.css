@@ -1,10 +1,7 @@
 .home-page{
-        display: grid;
-    grid-template-rows: auto 1fr auto;
-    min-block-size: 100dvh;
+   
 
-    main {
-        margin-block: 1rem;
+   
 
         .header {
             display: flex;
@@ -31,6 +28,6 @@
                 }
             }
         }
-    }
+    
 
 }

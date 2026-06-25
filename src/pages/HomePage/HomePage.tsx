@@ -3,14 +3,11 @@ import type { ReactNode } from "react";
 import styles from './HomePage.module.css'
 import BoardCard from "../../components/boardCard/boardCard";
 import Button from "../../components/common/Button/Button";
-import Header from "../../components/common/Header/Header";
-import Footer from "../../components/common/Footer/Footer";
+
 
 export default function HomePage(): ReactNode {
     return (
         <div className={styles["home-page"]}>
-            <Header />
-            <main>
                 <header className={styles.header}>
                     <h1 className={styles.title}>todo</h1>
                     {/* <button className={styles.action}>create</button> */}
@@ -53,8 +50,6 @@ export default function HomePage(): ReactNode {
 
                     </ul>
                 </main>
-            </main>
-           <Footer/>
         </div>
     )
 }
