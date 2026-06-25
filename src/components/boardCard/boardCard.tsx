@@ -22,7 +22,7 @@ export default function BoardCard ({id,color ,title ,description}:Props): ReactN
                 <div className={styles.content}>
                   <div className={styles.header}>
                     <h3 className={styles.title}>{title}</h3>
-                    <Link to="board" className={styles.link}>View</Link>
+                    <Link to={`board/${id}`} className={styles.link}>View</Link>
                   </div>
 
                   <p className={styles.description}>{description}</p>
