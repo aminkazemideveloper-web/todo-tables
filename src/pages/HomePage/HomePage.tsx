@@ -8,9 +8,7 @@ import Header from "../../components/common/Header/Header";
 export default function HomePage(): ReactNode {
     return (
         <div className={styles["home-page"]}>
-            <header>
-                <Header/>
-            </header>
+            <Header />
             <main>
                 <header className={styles.header}>
                     <h1 className={styles.title}>todo</h1>

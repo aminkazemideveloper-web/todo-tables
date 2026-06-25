@@ -6,8 +6,8 @@ import { Link } from "react-router";
 
 export default function Header () : ReactNode {
     return (
-        <div className={styles.header}>
+        <header className={styles.header}>
             <Link to="/" className={styles.logo}>Condoctor Table</Link>
-        </div>
+        </header>
     )
 }
