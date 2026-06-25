@@ -1,0 +1,50 @@
+.app {
+
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-block-size: 100dvh;
+
+    main {
+        margin-block: 1rem;
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+
+            .title {
+                font-weight: bold;
+                font-family: "lalezar";
+            }
+
+            .action {
+                border: none;
+                outline: none;
+                padding: 0.4rem 0.9rem;
+                border-radius: 0.3rem;
+                cursor: pointer;
+                transition: all 0.25s ease-in-out;
+                background-color: var(--color-primary);
+                color: var(--color-primary-contrust);
+
+                &:hover {
+                    background-color: var(--color-primary-hover);
+                }
+            }
+        }
+
+        .main {
+            .boards {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+                gap: 2rem;
+
+                >li {
+                  
+                }
+            }
+        }
+    }
+
+}

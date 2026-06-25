@@ -21,5 +21,18 @@ body{
     font-family: "Vazirmatn", sans-serif; ;
     inline-size: min(100% , 75rem);
     margin-inline: auto;
+    background-color: var(--color-surface--2);
+    color: var(--color-text);
+    font-size: var(--font-size-500);
     
+}
+
+.gray{
+    --main-color : var(--color-gray-500)
+}
+.blue{
+    --main-color : var(--color-blue-500)
+}
+.yellow{
+    --main-color : var(--color-yellow-500)
 }
