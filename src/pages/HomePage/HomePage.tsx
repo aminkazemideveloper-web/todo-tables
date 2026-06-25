@@ -5,10 +5,12 @@ import BoardCard from "../../components/boardCard/boardCard";
 import Button from "../../components/common/Button/Button";
 
 
+
 export default function HomePage(): ReactNode {
     
     return (
         <div className={styles["home-page"]}>
+                
                 <header className={styles.header}>
                     <h1 className={styles.title}>todo</h1>
                     {/* <button className={styles.action}>create</button> */}
