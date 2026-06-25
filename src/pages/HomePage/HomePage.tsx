@@ -6,6 +6,7 @@ import Button from "../../components/common/Button/Button";
 
 
 export default function HomePage(): ReactNode {
+    
     return (
         <div className={styles["home-page"]}>
                 <header className={styles.header}>
