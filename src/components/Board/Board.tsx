@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 
 
 import styles from './Board.module.css'
@@ -6,7 +6,51 @@ import IconButton from "../common/IconButton/IconButton";
 import MingcuteAddLine from "../../icons/MingcuteAddLine";
 import MingcuteEdit2Line from "../../icons/MingcuteEdit2Line";
 import MingcuteMore1Line from "../../icons/MingcuteMore1Line";
-export default function Board () : ReactNode {
+import List from "../List/List";
+import type { ListType } from "../../types/list";
+
+
+export default function Board(): ReactNode {
+
+    const [todoList, setTodoList] = useState<ListType>({
+            id : "1",
+            title : "to do",
+            items : [
+                {
+                    id : "1",
+                    title : "going to gim"
+                },
+                {
+                    id : "2",
+                    title : "reading the book"
+                },
+                {
+                    id : "3",
+                    title : "relax before rest"
+                },
+            ]
+    })
+    const [doingList, setDoingList] = useState<ListType>({
+            id : "2",
+            title : " doing",
+            items : [
+                {
+                    id : "4",
+                    title : "set up the windows in my computer"
+                },
+                {
+                    id : "5",
+                    title : "setup office in the computer"
+                }
+            ]
+    })
+    const [doneList, setDoneList] = useState<ListType>({
+            id : "3",
+            title : " done",
+            items : [
+                
+            ]
+    })
     return (
         <div className={styles.board}>
 
@@ -14,109 +58,26 @@ export default function Board () : ReactNode {
                 <div className={styles.title}>board title</div>
                 <div className={styles.actions}>
                     <IconButton>
-                        <MingcuteAddLine/>
+                        <MingcuteAddLine />
                     </IconButton>
                     <IconButton>
-                        <MingcuteEdit2Line/>
+                        <MingcuteEdit2Line />
                     </IconButton>
                 </div>
             </div>
 
             <ul className={styles.lists}>
                 <li>
-                    <div className={styles.list}>
-                        <div className={styles.header}>
-                            <div className={styles.title}>To Do</div>
-                            <IconButton>
-                                <MingcuteMore1Line/>
-                            </IconButton>
-                        </div>
-                        <ul className={styles.items}>
-                            <li>
-                                <div className={styles.item}>setup the window</div>
-                            </li>
-                            <li>
-                                <div className={styles.item}>go to gim</div>
-                            </li>
-                            <li>
-                                <div className={styles.item}>continue reading the book</div>
-                            </li>
-                            <li>
-                                <div className={styles.item}>relax before going to bed</div>
-                            </li>
-                        </ul>
-                    </div>
+                        <List  {...todoList}/>
                 </li>
                 <li>
-                    <div className={styles.list}>
-                        <div className={styles.header}>
-                            <div className={styles.title}>To Do</div>
-                            <IconButton>
-                                <MingcuteMore1Line/>
-                            </IconButton>
-                        </div>
-                        <ul className={styles.items}>
-                            <li>
-                                <div className={styles.item}>setup the window</div>
-                            </li>
-                            <li>
-                                <div className={styles.item}>go to gim</div>
-                            </li>
-                            <li>
-                                <div className={styles.item}>go to gim</div>
-                            </li>
-                            <li>
-                                <div className={styles.item}>go to gim</div>
-                            </li>
-                            <li>
-                                <div className={styles.item}>go to gim</div>
-                            </li>
-                            <li>
-                                <div className={styles.item}>go to gim</div>
-                            </li>
-                            <li>
-                                <div className={styles.item}>go to gim</div>
-                            </li>
-                            <li>
-                                <div className={styles.item}>go to gim</div>
-                            </li>
-                            <li>
-                            <li>
-                                <div className={styles.item}>go to gim</div>
-                            </li>
-                                <div className={styles.item}>continue reading the book</div>
-                            </li>
-                            <li>
-                                <div className={styles.item}>relax before going to bed</div>
-                            </li>
-                        </ul>
-                    </div>
+                        <List  {...doingList}/>
                 </li>
                 <li>
-                    <div className={styles.list}>
-                        <div className={styles.header}>
-                            <div className={styles.title}>To Do</div>
-                            <IconButton>
-                                <MingcuteMore1Line/>
-                            </IconButton>
-                        </div>
-                        <ul className={styles.items}>
-                            <li>
-                                <div className={styles.item}>setup the window</div>
-                            </li>
-                            <li>
-                                <div className={styles.item}>go to gim</div>
-                            </li>
-                            <li>
-                                <div className={styles.item}>continue reading the book</div>
-                            </li>
-                            <li>
-                                <div className={styles.item}>relax before going to bed</div>
-                            </li>
-                        </ul>
-                    </div>
+                        <List  {...doneList}/>
                 </li>
               
+
             </ul>
 
 

@@ -1,0 +1,11 @@
+.item{
+                            padding: 0.5rem 0.7rem;
+                            border-radius: 0.5rem;
+                            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                            background-color: var(--color-surface--3);
+                            font-size: var(--font-size-300);
+                            transition: all 0.25s ease;
+                            cursor: pointer;
+
+                            
+                        }
