@@ -54,7 +54,6 @@ export default function Board(): ReactNode {
                 return clone
             } finally {
                 setActiveList(null)
-
                 setActiveListItemID(null)
 
             }
@@ -63,6 +62,50 @@ export default function Board(): ReactNode {
 
 
     }
+
+
+    const handleMoveItem = (destinationId: string): void => {
+
+        try {
+            setLists(old => {
+
+                const activelistIndex = old.findIndex(list => list.id === activeListID)
+                if (activelistIndex === -1) {
+                    console.error("cant find active list")
+                    return old
+                }
+                const destinationlistIndex = old.findIndex(list => list.id === destinationId)
+                if (destinationlistIndex === -1) {
+                    console.error("cant find active list")
+                    return old
+                }
+
+
+
+                const clone = [...old]
+                const activeList = { ...old[activelistIndex] }
+                const destinationList = { ...old[destinationlistIndex] }
+
+                const activeListItemIndex = activeList.items.findIndex(item => item.id === activeListItemID)
+                if (activeListItemIndex === -1) {
+                    console.error("cant find active item")
+                    return old
+                }
+
+                // const activeItem = { ...activeList.items[activeListItemIndex] }
+
+                const [movedItem] = activeList.items.splice(activeListItemIndex, 1)
+                destinationList.items.push(movedItem)
+
+                return clone
+            })
+        } finally {
+            setActiveList(null)
+            setActiveListItemID(null)
+        }
+
+    }
+
 
 
     return (
@@ -78,7 +121,7 @@ export default function Board(): ReactNode {
 
                                 lists.filter(list => list.id !== activeListID).map(list => (
 
-                                    <Button key={list.id} color="gray">{list.title}</Button>
+                                    <Button key={list.id} color="gray" onClick={() => handleMoveItem(list.id)}>{list.title}</Button>
                                 ))}
                             <Button onClick={handleRemoveItem}>remove</Button>
                         </div>
@@ -96,15 +139,13 @@ export default function Board(): ReactNode {
             </div>
 
             <ul className={styles.lists}>
-                <li>
-                    <List list={lists[0]} onClick={handleItemClick} />
-                </li>
-                <li>
-                    <List list={lists[1]} onClick={handleItemClick} />
-                </li>
-                <li>
-                    <List list={lists[2]} onClick={handleItemClick} />
-                </li>
+                {lists.map(list => (
+                    <li key={list.id}>
+                        <List list={list} onClick={handleItemClick} />
+                    </li>
+                ))}
+
+
 
 
             </ul>
