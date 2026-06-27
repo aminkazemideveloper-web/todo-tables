@@ -5,52 +5,25 @@ import styles from './Board.module.css'
 import IconButton from "../common/IconButton/IconButton";
 import MingcuteAddLine from "../../icons/MingcuteAddLine";
 import MingcuteEdit2Line from "../../icons/MingcuteEdit2Line";
-import MingcuteMore1Line from "../../icons/MingcuteMore1Line";
+
 import List from "../List/List";
 import type { ListType } from "../../types/list";
+import { listsData } from "../../data/listsData";
 
 
 export default function Board(): ReactNode {
 
-    const [todoList, setTodoList] = useState<ListType>({
-            id : "1",
-            title : "to do",
-            items : [
-                {
-                    id : "1",
-                    title : "going to gim"
-                },
-                {
-                    id : "2",
-                    title : "reading the book"
-                },
-                {
-                    id : "3",
-                    title : "relax before rest"
-                },
-            ]
-    })
-    const [doingList, setDoingList] = useState<ListType>({
-            id : "2",
-            title : " doing",
-            items : [
-                {
-                    id : "4",
-                    title : "set up the windows in my computer"
-                },
-                {
-                    id : "5",
-                    title : "setup office in the computer"
-                }
-            ]
-    })
-    const [doneList, setDoneList] = useState<ListType>({
-            id : "3",
-            title : " done",
-            items : [
-                
-            ]
-    })
+    const [lists, setLists] = useState<ListType[]>(listsData)
+    
+
+    // const handleEditButtonClick = () : void =>{
+    //     setTodoList(old => {
+    //         const clone = [...old.items]
+    //         clone.splice(1,1)
+    //         return {...old ,items: clone}
+    //     } )
+    // }
+
     return (
         <div className={styles.board}>
 
@@ -68,13 +41,13 @@ export default function Board(): ReactNode {
 
             <ul className={styles.lists}>
                 <li>
-                        <List  {...todoList}/>
+                        <List  {...lists[0]}/>
                 </li>
                 <li>
-                        <List  {...doingList}/>
+                        <List  {...lists[1]}/>
                 </li>
                 <li>
-                        <List  {...doneList}/>
+                        <List  {...lists[2]}/>
                 </li>
               
 
