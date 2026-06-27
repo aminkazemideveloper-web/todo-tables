@@ -35,12 +35,13 @@
         display: flex;
         column-gap: 2rem;
         align-items: start;
-        min-block-size: 100%;
+        /* min-block-size: 100dvh; */
+        block-size: 100vh;
         overflow: auto;
-        margin-block-start: 1.5rem;
-        padding-block-end: 1rem;
+        margin-block-start: 2rem;
+        padding-block-end: 3rem;
         >li{
-             
+            block-size: 100%;     
         }
     }
 }

@@ -10,11 +10,12 @@ import List from "../List/List";
 import type { ListType } from "../../types/list";
 import { listsData } from "../../data/listsData";
 import Button from "../common/Button/Button";
+import { load, save } from "../../utiles/local-storage";
 
 
 export default function Board(): ReactNode {
 
-    const [lists, setLists] = useState<ListType[]>(listsData)
+    const [lists, setLists] = useState<ListType[]>(load)
 
     const [activeListID, setActiveList] = useState<string | null>(null)
     const [activeListItemID, setActiveListItemID] = useState<string | null>(null)
@@ -50,7 +51,7 @@ export default function Board(): ReactNode {
                 activeList.items.splice(activeItemIndex, 1)
 
                 clone[activeListIndex] = activeList
-
+                save("list",clone)
                 return clone
             } finally {
                 setActiveList(null)
@@ -84,7 +85,7 @@ export default function Board(): ReactNode {
 
                 const clone = [...old]
                 const activeList = { ...old[activelistIndex] }
-                const destinationList = { ...old[destinationlistIndex] }
+                const destinationList = { ...clone[destinationlistIndex] , items : [...clone[destinationlistIndex].items] }
 
                 const activeListItemIndex = activeList.items.findIndex(item => item.id === activeListItemID)
                 if (activeListItemIndex === -1) {
@@ -97,6 +98,10 @@ export default function Board(): ReactNode {
                 const [movedItem] = activeList.items.splice(activeListItemIndex, 1)
                 destinationList.items.push(movedItem)
 
+
+                clone[activelistIndex] = activeList
+                clone[destinationlistIndex] = destinationList
+                save("list",clone)
                 return clone
             })
         } finally {
