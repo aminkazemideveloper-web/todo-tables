@@ -6,21 +6,24 @@ import MingcuteMore1Line from "../../icons/MingcuteMore1Line";
 import ListItem from "../ListItem/ListItem";
 import type { ListType } from "../../types/list";
 
+type Props = {
+    onClick?: (itemID  :string , listID : string) => void  ,
+    list : ListType
+}
 
 
-
-export  default function List ({id ,items , title} : ListType) :ReactNode {
+export  default function List ({onClick , list} : Props) :ReactNode {
     return (
          <div className={styles.list}>
                         <div className={styles.header}>
-                            <div className={styles.title}>{title}</div>
+                            <div className={styles.title}>{list.title}</div>
                             <IconButton>
                                 <MingcuteMore1Line/>
                             </IconButton>
                         </div>
                         <ul className={styles.items}>
-                           {items.map( item =>(
-                                <ListItem {...item} key={item.id}/>
+                           {list.items.map( item =>(
+                                <ListItem item={item} key={item.id} listId = {list.id} onClick={onClick}/>
                            ))}
                            
                         </ul>
