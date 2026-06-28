@@ -4,8 +4,7 @@ import HomePage from './pages/HomePage/HomePage'
 import BoardPage from './pages/BoardPage/BoardPage'
 import RootLayout from './layouts/RootLayout/RootLayout'
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage'
-import { ErrorBoundary } from 'react-error-boundary'
-import ErrorPage from './pages/ErrorPage/ErrorPage'
+
 
 
 function App() {
@@ -13,7 +12,7 @@ function App() {
 
   return (
 
-    <ErrorBoundary fallback={<ErrorPage/>}>
+    
 
     
     <Routes>
@@ -23,7 +22,7 @@ function App() {
       <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
-    </ErrorBoundary>
+    
   )
 }
 

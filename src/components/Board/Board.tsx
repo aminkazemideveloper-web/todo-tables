@@ -23,13 +23,21 @@ export default function Board(): ReactNode {
     } , [lists])
 
     useEffect(()=>{
-        document.addEventListener("keydown" , (e)=>{
+
+        const handleDocumentKeyDown = (e : KeyboardEvent)=>{
                 if(e.code !== "Escape"){
                     return
                 }
                 setActiveListID(null)
                 setActiveListItemID(null)
-        })
+                console.log("key down");
+                
+        }
+        document.addEventListener("keydown" , handleDocumentKeyDown )
+
+        return ()=>{
+            document.removeEventListener("keydown" , handleDocumentKeyDown)
+        }
     } , [])
 
 
