@@ -23,7 +23,7 @@
         &.gray {
             --bg-color: var(--color-gray-400);
             --color: var(--color-white);
-            --bg-color-hover: var(--color-gray-600);
+            --bg-color-hover: var(--color-gray-500);
         }
 
         &.primary {
