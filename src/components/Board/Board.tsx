@@ -1,4 +1,4 @@
-import { useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 
 
 import styles from './Board.module.css'
@@ -8,7 +8,6 @@ import MingcuteEdit2Line from "../../icons/MingcuteEdit2Line";
 
 import List from "../List/List";
 import type { ListType } from "../../types/list";
-import { listsData } from "../../data/listsData";
 import Button from "../common/Button/Button";
 import { load, save } from "../../utiles/local-storage";
 
@@ -16,9 +15,13 @@ import { load, save } from "../../utiles/local-storage";
 export default function Board(): ReactNode {
 
     const [lists, setLists] = useState<ListType[]>(load)
-
     const [activeListID, setActiveList] = useState<string | null>(null)
     const [activeListItemID, setActiveListItemID] = useState<string | null>(null)
+
+    useEffect(()=>{
+        save("list",lists)
+    } , [lists])
+
 
     const handleItemClick = (itemID: string, listID: string): void => {
         setActiveList(listID)
@@ -51,7 +54,7 @@ export default function Board(): ReactNode {
                 activeList.items.splice(activeItemIndex, 1)
 
                 clone[activeListIndex] = activeList
-                save("list",clone)
+            
                 return clone
             } finally {
                 setActiveList(null)
@@ -101,7 +104,7 @@ export default function Board(): ReactNode {
 
                 clone[activelistIndex] = activeList
                 clone[destinationlistIndex] = destinationList
-                save("list",clone)
+              
                 return clone
             })
         } finally {
