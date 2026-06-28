@@ -15,16 +15,26 @@ import { load, save } from "../../utiles/local-storage";
 export default function Board(): ReactNode {
 
     const [lists, setLists] = useState<ListType[]>(load)
-    const [activeListID, setActiveList] = useState<string | null>(null)
+    const [activeListID, setActiveListID] = useState<string | null>(null)
     const [activeListItemID, setActiveListItemID] = useState<string | null>(null)
 
     useEffect(()=>{
         save("list",lists)
     } , [lists])
 
+    useEffect(()=>{
+        document.addEventListener("keydown" , (e)=>{
+                if(e.code !== "Escape"){
+                    return
+                }
+                setActiveListID(null)
+                setActiveListItemID(null)
+        })
+    } , [])
+
 
     const handleItemClick = (itemID: string, listID: string): void => {
-        setActiveList(listID)
+        setActiveListID(listID)
         setActiveListItemID(itemID)
     }
 
@@ -57,14 +67,12 @@ export default function Board(): ReactNode {
             
                 return clone
             } finally {
-                setActiveList(null)
+                setActiveListID(null)
                 setActiveListItemID(null)
 
             }
 
         })
-
-
     }
 
 
@@ -108,7 +116,7 @@ export default function Board(): ReactNode {
                 return clone
             })
         } finally {
-            setActiveList(null)
+            setActiveListID(null)
             setActiveListItemID(null)
         }
 
