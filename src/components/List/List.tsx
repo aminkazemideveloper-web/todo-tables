@@ -7,12 +7,12 @@ import ListItem from "../ListItem/ListItem";
 import type { ListType } from "../../types/list";
 
 type Props = {
-    onClick?: (itemID  :string , listID : string) => void  ,
+
     list : ListType
 }
 
 
-export  default function List ({onClick , list} : Props) :ReactNode {
+export  default function List ({ list} : Props) :ReactNode {
     return (
          <div className={styles.list}>
                         <div className={styles.header}>
@@ -23,7 +23,7 @@ export  default function List ({onClick , list} : Props) :ReactNode {
                         </div>
                         <ul className={styles.items}>
                            {list.items.map( item =>(
-                                <ListItem item={item} key={item.id} listId = {list.id} onClick={onClick}/>
+                                <ListItem item={item} key={item.id} listId = {list.id} />
                            ))}
                            
                         </ul>

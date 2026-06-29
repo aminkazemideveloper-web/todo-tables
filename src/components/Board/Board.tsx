@@ -1,4 +1,4 @@
-import { use, useEffect, useState, type ReactNode } from "react";
+import { use, type ReactNode } from "react";
 
 import IconButton from "../common/IconButton/IconButton";
 import MingcuteAddLine from "../../icons/MingcuteAddLine";
@@ -9,40 +9,20 @@ import { BoardContext } from "../../context/board-context";
 import List from "../List/List";
 
 import styles from './Board.module.css'
+import { ActiveItemContext } from "../../context/active-item-context";
 
-export default function Board(): ReactNode {
-    const [activeListID, setActiveListID] = useState<string | null>(null)
-    const [activeListItemID, setActiveListItemID] = useState<string | null>(null)
+export default function Board(): ReactNode {    
     const { list, move } = use(BoardContext)
-
-    useEffect(() => {
-        const handleDocumentKeyDown = (e: KeyboardEvent) => {
-            if (e.code !== "Escape") {
-                return
-            }
-            setActiveListID(null)
-            setActiveListItemID(null)
-        }
-        document.addEventListener("keydown", handleDocumentKeyDown)
-
-        return () => {
-            document.removeEventListener("keydown", handleDocumentKeyDown)
-        }
-    }, [])
-
-    const handleItemClick = (itemID: string, listID: string): void => {
-        setActiveListID(listID)
-        setActiveListItemID(itemID)
-    }
+    const {activate ,activeListID, activeListItemID , deActivate}  = use(ActiveItemContext)
+   
+    
 
     const handleMoveItem = (destinationId: string): void => {
         if (activeListID && activeListItemID !== null) {
             move(activeListID, activeListItemID, destinationId)
-            setActiveListID(null)
-            setActiveListItemID(null)
+            deActivate()
         }
     }
-
     return (
         <div className={styles.board}>
             <div className={styles.toolbar}>
@@ -54,7 +34,6 @@ export default function Board(): ReactNode {
                                 list.filter(list => list.id !== activeListID).map(list => (
                                     <Button key={list.id} color="gray" onClick={() => handleMoveItem(list.id)}>{list.title}</Button>
                                 ))}
-
                         </div>
                     )}
                     <IconButton>
@@ -68,7 +47,7 @@ export default function Board(): ReactNode {
             <ul className={styles.lists}>
                 {list.map(list => (
                     <li key={list.id}>
-                        <List list={list} onClick={handleItemClick} />
+                        <List list={list}  />
                     </li>
                 ))}
             </ul>

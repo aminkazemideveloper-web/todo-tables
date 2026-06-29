@@ -4,25 +4,33 @@ import type { ListItemType } from "../../types/list-item";
 import MingcuteDelete2Line from "../../icons/MingcuteDelete2Line";
 import IconButton from "../common/IconButton/IconButton";
 import { BoardContext } from "../../context/board-context";
+import { ActiveItemContext } from "../../context/active-item-context";
+import clsx from "clsx";
 
 
 type Props = {
     listId : string
-    onClick? : (listItemID : string , listID  : string) => void,
     item : ListItemType ,
 }
 
 
-export default function ListItem ({ item , onClick , listId} : Props) : ReactNode {
+
+export default function ListItem ({ item , listId } : Props) : ReactNode {
     const {remove} =  use(BoardContext)
+    const {activeListID , activeListItemID , activate} = use(ActiveItemContext)       
         
+
+    const handleItemClick = (): void => {
+       activate(item.id ,  listId)
+    }
 
      const handleRemoveButtonClick = (e: MouseEvent ): void => {
             e.stopPropagation();
             remove(listId , item.id)
         }
     return (
-       <div className={styles.item} onClick={()=>onClick?.(item.id , listId)}>
+       <div className={clsx(styles.item , item.id === activeListItemID && styles.active) }
+          onClick={handleItemClick}>
         {item.title}
         <IconButton onClick={handleRemoveButtonClick}>
             <MingcuteDelete2Line/>

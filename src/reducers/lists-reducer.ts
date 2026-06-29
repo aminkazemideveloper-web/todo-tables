@@ -71,7 +71,7 @@ export function ListsReducer(state: ListType[], action: Action): ListType[] {
             }
 
             const clone = [...state]
-            const list = { ...clone[listIndex] }
+            const list = { ...clone[listIndex] , items: [...clone[listIndex].items]}
 
 
 
