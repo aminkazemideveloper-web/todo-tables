@@ -8,15 +8,18 @@ import { BrowserRouter } from 'react-router'
 import { StrictMode } from 'react'
 import ErrorPage from './pages/ErrorPage/ErrorPage.tsx'
 import { ErrorBoundary } from 'react-error-boundary'
- 
+
+import Toaster from './components/Toaster/Toaster.tsx'
+
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <ErrorBoundary fallback={<ErrorPage/>}>
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
-  </ErrorBoundary>
+    <ErrorBoundary fallback={<ErrorPage />}>
+      <BrowserRouter>
+        <App />
+        <Toaster/>
+      </BrowserRouter>
+    </ErrorBoundary>
   </StrictMode>
   ,
 )

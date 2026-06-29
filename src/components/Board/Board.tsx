@@ -10,6 +10,7 @@ import List from "../List/List";
 
 import styles from './Board.module.css'
 import { ActiveItemContext } from "../../context/active-item-context";
+import { toast } from "react-toastify";
 
 export default function Board(): ReactNode {    
     const { list, move } = use(BoardContext)
@@ -20,6 +21,7 @@ export default function Board(): ReactNode {
     const handleMoveItem = (destinationId: string): void => {
         if (activeListID && activeListItemID !== null) {
             move(activeListID, activeListItemID, destinationId)
+            toast.success("item movet successfully")
             deActivate()
         }
     }

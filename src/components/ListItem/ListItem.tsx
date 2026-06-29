@@ -6,6 +6,7 @@ import IconButton from "../common/IconButton/IconButton";
 import { BoardContext } from "../../context/board-context";
 import { ActiveItemContext } from "../../context/active-item-context";
 import clsx from "clsx";
+import { toast } from "react-toastify";
 
 
 type Props = {
@@ -17,7 +18,7 @@ type Props = {
 
 export default function ListItem ({ item , listId } : Props) : ReactNode {
     const {remove} =  use(BoardContext)
-    const {activeListID , activeListItemID , activate} = use(ActiveItemContext)       
+    const {activeListID , activeListItemID , activate , deActivate} = use(ActiveItemContext)       
         
 
     const handleItemClick = (): void => {
@@ -26,7 +27,9 @@ export default function ListItem ({ item , listId } : Props) : ReactNode {
 
      const handleRemoveButtonClick = (e: MouseEvent ): void => {
             e.stopPropagation();
-            remove(listId , item.id)
+            remove(listId , item.id);
+            toast.success("item removed successfully")
+            deActivate()
         }
     return (
        <div className={clsx(styles.item , item.id === activeListItemID && styles.active) }
