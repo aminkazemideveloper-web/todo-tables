@@ -1,11 +1,25 @@
-.item{
-                            padding: 0.5rem 0.7rem;
-                            border-radius: 0.5rem;
-                            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-                            background-color: var(--color-surface--3);
-                            font-size: var(--font-size-300);
-                            transition: all 0.25s ease;
-                            cursor: pointer;
+.item {
+    padding: 0.5rem 0.7rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: var(--color-surface--3);
+    font-size: var(--font-size-300);
+    transition: all 0.25s ease;
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+    align-items: start;
 
-                            
-                        }
+    button{
+        opacity: 0;
+    }
+
+    &:hover{
+        transform: translateY(-2px);
+        button{
+                opacity: 1;
+            }
+    }
+
+}
