@@ -49,6 +49,8 @@
 --color-text : var(--color-gray-900);
 --color-text--sub : var(--color-gray-600);
 
+--color-backdrup  : hsl(0, 0% , 0% , 60%);
+
 
 --color-surface--1 : var(--color-gray-200); 
 --color-surface--2 : var(--color-gray-100); 

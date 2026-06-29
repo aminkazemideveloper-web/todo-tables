@@ -1,0 +1,29 @@
+.modal{
+    inline-size: min(35rem , 100%);
+    margin: auto;
+    border: none;
+    border-radius: 0.3rem;
+
+    &::backdrop {
+        background-color: var(--color-backdrup);
+        backdrop-filter: blur(2px);
+    }
+
+    >header{
+        padding: 0.8rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        border-block-end: 1px solid var(--color-gray-400);
+
+        .heading{
+            color: var(--color-gray-700);
+            font-size: var(--font-size-500);
+            font-weight: 600;
+        }
+    }
+    >main{
+        padding: 0.5rem;
+    }
+}
