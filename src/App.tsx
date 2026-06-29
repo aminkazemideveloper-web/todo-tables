@@ -8,13 +8,7 @@ import NotFoundPage from './pages/NotFoundPage/NotFoundPage'
 
 
 function App() {
-
-
   return (
-
-    
-
-    
     <Routes>
       <Route element={<RootLayout/>}>
       <Route index element={<HomePage />} />
@@ -22,8 +16,6 @@ function App() {
       <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
-    
   )
 }
-
 export default App

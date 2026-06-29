@@ -85,11 +85,14 @@ export default function Board(): ReactNode {
 
 
     const handleMoveItem = (destinationId: string): void => {
-
+            console.log("des id" , destinationId);
+            
         try {
             setLists(old => {
 
                 const activelistIndex = old.findIndex(list => list.id === activeListID)
+                console.log("actlist" ,activelistIndex);
+                
                 if (activelistIndex === -1) {
                     console.error("cant find active list")
                     return old
@@ -103,16 +106,21 @@ export default function Board(): ReactNode {
 
 
                 const clone = [...old]
-                const activeList = { ...old[activelistIndex] }
+                const activeList = {
+    ...clone[activelistIndex],
+    items: [...clone[activelistIndex].items]
+}
                 const destinationList = { ...clone[destinationlistIndex] , items : [...clone[destinationlistIndex].items] }
 
                 const activeListItemIndex = activeList.items.findIndex(item => item.id === activeListItemID)
+                console.log(activeListItemIndex);
+                
                 if (activeListItemIndex === -1) {
                     console.error("cant find active item")
                     return old
                 }
 
-                // const activeItem = { ...activeList.items[activeListItemIndex] }
+                
 
                 const [movedItem] = activeList.items.splice(activeListItemIndex, 1)
                 destinationList.items.push(movedItem)
