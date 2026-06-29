@@ -15,7 +15,7 @@ type Props = {
 
 export default function ListItem ({ item , onClick , listId} : Props) : ReactNode {
     const {remove} =  use(BoardContext)
-
+        
 
      const handleRemoveButtonClick = (e: MouseEvent ): void => {
             e.stopPropagation();
